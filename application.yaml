@@ -1,39 +1,16 @@
-server:
-  port: 8003
-
-# MyBatis配置
-mybatis:
-  # 配置实体类别名
-  typeAliasesPackage: com.steve.springcloud.pojo
-  # 配置SQL映射文件路径
-  mapper-locations: classpath:mybatis/mapper/*.xml
-  # 配置mybatis的配置文件路径，也可以使用configuration属性配置
-  # config-location: classpath:mybatis/mybatis-config.xml
-  # 配置驼峰命名
-  configuration:
-    map-underscore-to-camel-case: true
-
-# Spring配置
 spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
   application:
-    name: springcloud-provider
-  datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3309/db03?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
+    name: springcloud-config-dev
 
-# Eureka服务提供者配置
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
-  instance:
-    instance-id: springcloud-provider-8003
-    status-page-url: http://localhost:${server.port}/actuator/info
-
-# Info配置
-info:
-  app.name: steve-springcloud
-  company.name: www.steve.com
+---
+spring:
+  profiles: test
+  application:
+    name: springcloud-config-test
+  
