@@ -8,7 +8,7 @@ server:
 spring:
   profiles: dev
   application:
-    name: springcloud-provider-8xxx
+    name: springcloud-provider-8x
 
 eureka:
   client:
